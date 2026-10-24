@@ -2,8 +2,6 @@
 
 # VoxDeck
 
-# VoxDeck
-
 An AI-powered voice and communication workspace designed to streamline fast business pitches and audio workflow management.
 
 - **Voice AI Integration:** Seamlessly generate, translate, and synthesize multi-lingual business pitches.
