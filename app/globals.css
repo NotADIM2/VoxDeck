@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #020617;
+  color: #f8fafc;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Infinite Marquee Ticker Track */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================================================= */
+/* 3D FLOATING DASHBOARD DEPTH ANIMATION                                     */
+/* ========================================================================= */
+
+.dashboard-3d-perspective {
+  perspective: 1400px;
+  perspective-origin: 50% 35%;
+  transform-style: preserve-3d;
+}
+
+@keyframes dashboard-depth-loop {
+  /* Natural resting position (pause at backward depth) */
+  0%,
+  12% {
+    transform: perspective(1400px) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 25px rgba(16, 185, 129, 0.04);
+  }
+
+  /* Smooth fluid glide forward toward the viewer */
+  50%,
+  62% {
+    transform: perspective(1400px) translate3d(0px, -6px, 32px) rotateX(1.4deg) rotateY(-0.5deg) scale(1.012);
+    box-shadow: 0 38px 85px -15px rgba(0, 0, 0, 0.88), 0 0 45px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.14);
+  }
+
+  /* Smooth return to resting depth */
+  100% {
+    transform: perspective(1400px) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 25px rgba(16, 185, 129, 0.04);
+  }
+}
+
+.dashboard-3d-floating {
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+  animation: dashboard-depth-loop 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-3d-floating {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
