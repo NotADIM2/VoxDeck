@@ -1,5 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33900112/README.md)
-
 # VoxDeck
 
 An AI-powered voice and communication workspace designed to streamline fast business pitches and audio workflow management.
